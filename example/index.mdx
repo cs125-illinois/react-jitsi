@@ -1,0 +1,24 @@
+import { JitsiMultiRoom } from "./components"
+
+# `@cs125/react-jitsi`
+
+[![npm version](https://badge.fury.io/js/%40cs125%2Freact-jitsi.svg)](https://badge.fury.io/js/%40cs125%2Freact-jitsi)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+React TypeScript support for [embedding Jitsi](https://github.com/jitsi/jitsi-meet/blob/master/doc/api.md).
+
+```bash
+npm i @cs125/react-jitsi
+```
+
+## Use
+
+Visit the documentation [here](https://github.com/cs125-illinois/react-jitsi/).
+
+## Demo
+
+<JitsiMultiRoom
+  domain={process.env.JITSI_DOMAIN}
+  roomNames={["2227", "0403"]}
+  options={{ noSSL: false, height: "480px" }}
+/>

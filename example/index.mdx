@@ -20,5 +20,12 @@ Visit the documentation [here](https://github.com/cs125-illinois/react-jitsi/).
 <JitsiMultiRoom
   domain={process.env.JITSI_DOMAIN}
   roomNames={["2227", "0403"]}
-  options={{ noSSL: false, height: "480px", configOverwrite: { openBridgeChannel: "websocket" } }}
+  options={{
+    noSSL: false,
+    height: "480px",
+    configOverwrite: {
+      bosh: "wss://localhost:8443/xmpp-websocket",
+      openBridgeChannel: "websocket",
+    },
+  }}
 />

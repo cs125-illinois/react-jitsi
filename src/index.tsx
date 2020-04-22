@@ -28,9 +28,11 @@ declare class JitsiMeetExternalAPI {
 
 export interface JitsiWrapperContext {
   loaded: boolean
+  url: string
 }
 const JitsiWrapperContext = React.createContext<JitsiWrapperContext>({
   loaded: false,
+  url: "",
 })
 export interface JitsiWrapperProps {
   url: string
@@ -54,11 +56,24 @@ export const JitsiWrapper: React.FC<JitsiWrapperProps> = ({ url, children }) => 
     }
   }, [])
 
-  return <JitsiWrapperContext.Provider value={{ loaded }}>{children}</JitsiWrapperContext.Provider>
+  return <JitsiWrapperContext.Provider value={{ loaded, url }}>{children}</JitsiWrapperContext.Provider>
 }
 JitsiWrapper.propTypes = {
   url: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
+}
+
+export const withJitsiContext = (): JitsiWrapperContext => {
+  return useContext(JitsiWrapperContext)
+}
+interface WithJitsiContextProps {
+  children: (jitsiContext: JitsiWrapperContext) => JSX.Element | null
+}
+export const WithJitsiContext: React.FC<WithJitsiContextProps> = ({ children }) => {
+  return children(withJitsiContext())
+}
+WithJitsiContext.propTypes = {
+  children: PropTypes.func.isRequired,
 }
 
 export interface JitsiRoomProps {

@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from "react"
 import PropTypes from "prop-types"
+import { EventEmitter } from "events"
 
 export interface JitsiOptions {
   roomName: string
@@ -21,9 +22,20 @@ export interface JitsiOptions {
     displayName?: string
   }
 }
-declare class JitsiMeetExternalAPI {
+export declare class JitsiMeetExternalAPI extends EventEmitter {
   constructor(domain: string, options?: JitsiOptions & { parentNode: Element })
   dispose: () => void
+  executeCommand: (command: string, ...args: string[]) => void
+  getNumberOfParticipants: () => number
+  avatarURL: () => string
+  displayName: () => string
+  email: () => string
+  iframe: () => HTMLIFrameElement
+  isAudioMuted: () => Promise<boolean>
+  isVideoMuted: () => Promise<boolean>
+  isAudioAvailable: () => Promise<boolean>
+  isVideoAvailable: () => Promise<boolean>
+  invite: (invitees: unknown[]) => Promise<void>
 }
 
 export interface JitsiWrapperContext {

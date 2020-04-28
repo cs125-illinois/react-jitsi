@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react"
+import React, { useEffect, useState, useContext, CSSProperties } from "react"
 import PropTypes from "prop-types"
 import { EventEmitter } from "events"
 
@@ -92,6 +92,7 @@ export interface JitsiRoomProps {
   domain: string
   options: JitsiOptions
   id?: string
+  style?: CSSProperties
   apiChanged?: (api: JitsiMeetExternalAPI) => void
 }
 export const jitsiOptionDefaults = {
@@ -122,7 +123,7 @@ export const JitsiRoom: React.FC<JitsiRoomProps> = (props) => {
     }
   }, [loaded, JSON.stringify({ domain, options })])
 
-  return <div id={id || "jitsi"} />
+  return <div id={id || "jitsi"} style={props.style || {}} />
 }
 
 JitsiRoom.propTypes = {
@@ -137,5 +138,6 @@ JitsiRoom.propTypes = {
     jwt: PropTypes.string,
   }).isRequired,
   id: PropTypes.string,
+  style: PropTypes.object,
   apiChanged: PropTypes.func,
 }

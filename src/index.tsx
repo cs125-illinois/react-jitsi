@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext, CSSProperties } from "react"
 import PropTypes from "prop-types"
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { EventEmitter } from "events"
 
 export interface JitsiOptions {
@@ -22,20 +23,22 @@ export interface JitsiOptions {
     displayName?: string
   }
 }
-export declare class JitsiMeetExternalAPI extends EventEmitter {
-  constructor(domain: string, options?: JitsiOptions & { parentNode: Element })
-  dispose: () => void
-  executeCommand: (command: string, ...args: string[]) => void
-  getNumberOfParticipants: () => number
-  avatarURL: () => string
-  displayName: () => string
-  email: () => string
-  iframe: () => HTMLIFrameElement
-  isAudioMuted: () => Promise<boolean>
-  isVideoMuted: () => Promise<boolean>
-  isAudioAvailable: () => Promise<boolean>
-  isVideoAvailable: () => Promise<boolean>
-  invite: (invitees: unknown[]) => Promise<void>
+declare global {
+  class JitsiMeetExternalAPI extends EventEmitter {
+    constructor(domain: string, options?: JitsiOptions & { parentNode: Element })
+    dispose: () => void
+    executeCommand: (command: string, ...args: string[]) => void
+    getNumberOfParticipants: () => number
+    avatarURL: () => string
+    displayName: () => string
+    email: () => string
+    iframe: () => HTMLIFrameElement
+    isAudioMuted: () => Promise<boolean>
+    isVideoMuted: () => Promise<boolean>
+    isAudioAvailable: () => Promise<boolean>
+    isVideoAvailable: () => Promise<boolean>
+    invite: (invitees: unknown[]) => Promise<void>
+  }
 }
 
 export interface JitsiWrapperContext {

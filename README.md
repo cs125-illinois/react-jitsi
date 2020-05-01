@@ -1,6 +1,6 @@
 # @cs125/react-jitsi
 
-[![npm version](https://badge.fury.io/js/%40cs125%2Freact-jitsi.svg)](https://badge.fury.io/js/%40cs125%2Freact-jitsi)
+![npm](https://img.shields.io/npm/v/@cs125/react-jitsi)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 React TypeScript support for [embedding Jitsi](https://github.com/jitsi/jitsi-meet/blob/master/doc/api.md).

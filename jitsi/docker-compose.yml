@@ -40,12 +40,14 @@ services:
       - JIBRI_RECORDER_USER
       - JIBRI_RECORDER_PASSWORD
       - ENABLE_RECORDING
+      - BOSH_URL
   prosody:
     image: cs125/jitsi-prosody:latest
+    ports:
+      - "5280:5280"
     expose:
       - "5222"
       - "5347"
-      - "5280"
     volumes:
       - ./config/prosody:/config
     networks:
@@ -159,4 +161,4 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 172.28.0.0/16
+        - subnet: 172.28.1.0/24

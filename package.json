@@ -17,6 +17,7 @@
     "eslint": "eslint --fix src/ example/ --max-warnings=0 --ext .js,.ts,.tsx",
     "example": "parcel example/index.html",
     "jitsi": "rm -rf jitsi/config && docker-compose -p react-jitsi --env-file jitsi/.env -f jitsi/docker-compose.yml up",
+    "jitsi:down": "rm -rf jitsi/config && docker-compose -p react-jitsi --env-file jitsi/.env -f jitsi/docker-compose.yml down -v",
     "ncu": "ncu",
     "prepublishOnly": "npm run check && npm run build",
     "start": "concurrently -n example,src,jitsi \"npm run example\" \"npm run watch\" \"npm run jitsi > /dev/null\"",

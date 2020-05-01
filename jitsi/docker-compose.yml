@@ -10,8 +10,7 @@ services:
       - ./config/web/letsencrypt:/etc/letsencrypt
       - ./config/transcripts:/usr/share/jitsi-meet/transcripts
     networks:
-      meet.jitsi:
-        ipv4_address: 172.28.1.1
+      react-jitsi:
         aliases:
           - ${XMPP_DOMAIN}
     environment:
@@ -51,7 +50,7 @@ services:
     volumes:
       - ./config/prosody:/config
     networks:
-      meet.jitsi:
+      react-jitsi:
         aliases:
           - ${XMPP_SERVER}
     environment:
@@ -110,7 +109,7 @@ services:
     volumes:
       - ./config/jicofo:/config
     networks:
-      - meet.jitsi
+      react-jitsi:
     environment:
       - ENABLE_AUTH
       - XMPP_DOMAIN
@@ -138,9 +137,7 @@ services:
     volumes:
       - ./config/jvb:/config
     networks:
-      meet.jitsi:
-        aliases:
-          - jvb.meet.jitsi
+      react-jitsi:
     environment:
       - DOCKER_HOST_ADDRESS
       - XMPP_AUTH_DOMAIN
@@ -157,8 +154,4 @@ services:
       - TZ
       - HTTPS_PORT
 networks:
-  meet.jitsi:
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.28.1.0/24
+  react-jitsi:
